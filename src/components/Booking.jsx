@@ -45,6 +45,10 @@ const Booking = () => {
     setSelectedRoomPrice(roomPrices[roomNumber]);
   }, [roomNumber]);
 
+  useEffect(() => {
+    window.scrollTo(0, 0); // Scroll to top whenever the Booking page is loaded
+  }, []);
+
   const handleRoomChange = (e) => {
     const newRoomCount = e.target.value;
     if (newRoomCount > 5) {

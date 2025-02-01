@@ -7,22 +7,23 @@ const Navbar = () => {
   const scrollToSection = (sectionId) => {
     const element = document.getElementById(sectionId);
     if (element) {
-      window.scrollTo({
-        top: element.offsetTop,
-        behavior: "smooth",
+      element.scrollIntoView({
+        behavior: "smooth", // Smooth scroll
+        block: "start",
       });
     }
   };
 
+
   return (
     <nav className="bg-black text-white p-4 sticky top-0 z-50">
       <div className="max-w-7xl mx-auto flex justify-between items-center">
-        {/* SVG Logo on the left */}
+        {/* Logo */}
         <button
           className="flex items-center gap-2 text-2xl font-bold text-white"
           onClick={() => scrollToSection("home")}
         >
-          {/* Replace the SVG below with your logo */}
+          {/* Replace with your logo */}
           <svg
             width="221"
             height="37.180780109841805"
@@ -174,30 +175,27 @@ const Navbar = () => {
           )}
         </button>
 
+        {/* Desktop Navbar Buttons */}
         <ul className="hidden md:flex space-x-6 text-lg">
           <li>
-            <NavbarButton
-              label="Home"
-              onClick={() => scrollToSection("home")}
-            />
+            <button onClick={() => scrollToSection("home")}>
+              <NavbarButton label="Home" />
+            </button>
           </li>
           <li>
-            <NavbarButton
-              label="Rooms"
-              onClick={() => scrollToSection("rooms")}
-            />
+            <button onClick={() => scrollToSection("rooms")}>
+              <NavbarButton label="Rooms" />
+            </button>
           </li>
           <li>
-            <NavbarButton
-              label="Facilities"
-              onClick={() => scrollToSection("facilities")}
-            />
+            <button onClick={() => scrollToSection("facilities")}>
+              <NavbarButton label="Facilities" />
+            </button>
           </li>
           <li>
-            <NavbarButton
-              label="Contact Us"
-              onClick={() => scrollToSection("contact")}
-            />
+            <button onClick={() => scrollToSection("contact")}>
+              <NavbarButton label="Contact Us" />
+            </button>
           </li>
         </ul>
       </div>

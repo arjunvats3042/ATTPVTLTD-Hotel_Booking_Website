@@ -15,8 +15,8 @@ import swimming2 from "../serviceimg/roberto-nickson-h1_ILkb9tLo-unsplash.jpg";
 
 const Services = () => {
   return (
-    <div className="bg-black py-10">
-      <h1 className="text-center text-3xl font-semibold text-white mb-6">
+    <div id="facilities" className="bg-black py-2">
+      <h1 className="text-center mb-10 top-4 text-white text-3xl sm:text-4xl lg:text-5xl font-semibold z-10">
         Our Services
       </h1>
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 px-6 max-w-6xl mx-auto">

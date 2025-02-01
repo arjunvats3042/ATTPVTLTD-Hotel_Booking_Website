@@ -19,7 +19,7 @@ const Servicecard = ({frontimg, title, description, backimg}) => {
             <div className="front-content">
               <small className="badge">{title}</small>
               <div className="description">
-                  <strong>{description}</strong>
+                <strong>{description}</strong>
               </div>
             </div>
           </div>
@@ -36,15 +36,13 @@ const StyledWrapper = styled.div`
     height: 300px;
     position: relative;
     border-radius: 10px;
-    box-shadow: 10px 10px 20px 5px rgba(255, 255, 255, 0.6); /* Static glow at bottom-right */
   }
 
   .content {
     width: 100%;
     height: 100%;
     transform-style: preserve-3d;
-    transition: transform 300ms;
-    box-shadow: 10px 10px 20px 5px rgba(255, 255, 255, 0.6); /* Static glow at bottom-right */
+    transition: transform 1s; /* Slower rotation */
     border-radius: 5px;
   }
 
@@ -83,14 +81,12 @@ const StyledWrapper = styled.div`
     gap: 20px;
   }
 
-  /* Reduced back image size */
   .back-content img {
     width: 90px;
     height: 90px;
     object-fit: contain;
   }
 
-  /* Increased title size */
   .back-content strong {
     font-size: 18px;
   }
@@ -117,28 +113,28 @@ const StyledWrapper = styled.div`
   .front-content .badge {
     background-color: #00000070;
     text-align: center;
-    padding: 4px 12px; 
-    border-radius: 15px; 
-    backdrop-filter: blur(1px); 
+    padding: 4px 12px;
+    border-radius: 15px;
+    backdrop-filter: blur(1px);
     font-size: 16px;
-    font-weight: bold; 
+    font-weight: bold;
     color: white;
   }
 
   .description {
     box-shadow: 0px 0px 15px 5px rgba(255, 255, 255, 0.3);
     width: 100%;
-    padding: 20px; 
-    background-color: rgba(0, 0, 0, 0.3); 
+    padding: 20px;
+    background-color: rgba(0, 0, 0, 0.3);
     backdrop-filter: blur(1px);
     border-radius: 10px;
-    height: 60%; 
-    font-size: 13px; 
-    line-height: 1.6; 
-    color: white; 
+    height: 60%;
+    font-size: 13px;
+    line-height: 1.6;
+    color: white;
     display: flex;
     justify-content: center;
-    align-items: flex-start; 
+    align-items: flex-start;
   }
 
   .front .img {
@@ -153,7 +149,7 @@ const StyledWrapper = styled.div`
     height: 100%;
     object-fit: cover;
     object-position: center;
-    transition: all 1s ease-in-out;
+    transition: all 2s ease-in-out;
   }
 
   .card:hover .img img {
@@ -162,5 +158,3 @@ const StyledWrapper = styled.div`
 `;
 
 export default Servicecard;
-
-

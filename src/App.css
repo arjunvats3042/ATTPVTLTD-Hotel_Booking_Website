@@ -1,11 +1,5 @@
-html {
+html, body {
   scroll-behavior: smooth;
 }
-/* .hero-section {
-  padding-bottom: 50px;
-}
 
-.rooms-section {
-  margin-top: 50px;
-} */
 @import url('https://fonts.googleapis.com/css2?family=Permanent+Marker&display=swap';

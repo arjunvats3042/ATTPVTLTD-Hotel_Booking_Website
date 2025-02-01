@@ -4,16 +4,19 @@ import styled from "styled-components";
 const FormButton = () => {
   return (
     <StyledWrapper>
-      <button> Book Now</button>
+      <button>Book Now</button>
     </StyledWrapper>
   );
 };
 
 const StyledWrapper = styled.div`
   button {
-  margin-top: 1em;
+    margin-top: 1em;
     height: 3em;
-    width: 30em;
+    /* Use max-width instead of fixed width for responsiveness */
+    max-width: 30em;
+    width: 100%; /* Occupy full width of parent container */
+    padding: 0 1em; /* Add some padding for smaller screens */
     border: none;
     border-radius: 10em;
     background: #016dd9;
@@ -21,6 +24,7 @@ const StyledWrapper = styled.div`
     color: #ffffff;
     font-family: inherit;
     font-weight: 500;
+    box-sizing: border-box; /* Include padding and border in the element's total width and height */
   }
 
   button:hover {
@@ -29,33 +33,31 @@ const StyledWrapper = styled.div`
 
   @keyframes shake3856 {
     0% {
-      -webkit-transform: translate(0);
       transform: translate(0);
     }
-
     20% {
-      -webkit-transform: translate(-2px, 2px);
       transform: translate(-2px, 2px);
     }
-
     40% {
-      -webkit-transform: translate(-2px, -2px);
       transform: translate(-2px, -2px);
     }
-
     60% {
-      -webkit-transform: translate(2px, 2px);
       transform: translate(2px, 2px);
     }
-
     80% {
-      -webkit-transform: translate(2px, -2px);
       transform: translate(2px, -2px);
     }
-
     100% {
-      -webkit-transform: translate(0);
       transform: translate(0);
+    }
+  }
+
+  /* Media query for smaller screens */
+  @media (max-width: 768px) {
+    /* Adjust breakpoint as needed */
+    button {
+      font-size: 16px; /* Slightly smaller font size */
+      height: 2.5em; /* Adjust height as needed */
     }
   }
 `;
