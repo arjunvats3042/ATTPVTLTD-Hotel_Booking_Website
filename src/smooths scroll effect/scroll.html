@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      body {
+        height: 100vh;
+        width: 100vw;
+        background-color: white;
+        margin: 0rem;
+        overflow: hidden;
+      }
+      #image-track > .img {
+        width: 40vmin;
+        height: 56vmin;
+        object-fit: cover;
+        object-position: 100% 50%;
+      }
+
+      #image-track {
+        display: flex;
+        gap: 4vmin;
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        transform: translate(0%, -50%);
+      }
+    </style>
+  </head>
+  <body>
+    <div id="image-track" data-mouse-down-at="0" data-prev-percentage="0">
+      <img
+        src="./roomsimg/room1.jpg"
+        alt="Room 1"
+        class="img"
+        draggable="false"
+      />
+      <img
+        src="./roomsimg/room2.jpg"
+        alt="Room 2"
+        class="img"
+        draggable="false"
+      />
+      <img
+        src="./roomsimg/room3.jpg"
+        alt="Room 3"
+        class="img"
+        draggable="false"
+      />
+      <img
+        src="./roomsimg/room4.jpg"
+        alt="Room 4"
+        class="img"
+        draggable="false"
+      />
+      <img
+        src="./roomsimg/room5.jpg"
+        alt="Room 5"
+        class="img"
+        draggable="false"
+      />
+      <img
+        src="./roomsimg/room6.jpg"
+        alt="Room 6"
+        class="img"
+        draggable="false"
+      />
+      <img
+        src="./roomsimg/room7.jpg"
+        alt="Room 7"
+        class="img"
+        draggable="false"
+      />
+      <img
+        src="./roomsimg/room8.jpg"
+        alt="Room 8"
+        class="img"
+        draggable="false"
+      />
+    </div>
+  </body>
+  <script>
+    const track = document.getElementById("image-track");
+    let nextPercentage = 0;
+    let isMouseDown = false;
+
+    window.onmousedown = (e) => {
+      isMouseDown = true;
+      track.dataset.mouseDownAt = e.clientX;
+    };
+
+    window.onmousemove = (e) => {
+      if (!isMouseDown) return;
+
+      const mouseDelta = parseFloat(track.dataset.mouseDownAt) - e.clientX;
+      const maxDelta = window.innerWidth / 2;
+      let percentage = (mouseDelta / maxDelta) * -100;
+      nextPercentage = parseFloat(track.dataset.prevPercentage) + percentage;
+
+      // Setting limits to percentage
+      nextPercentage = Math.min(nextPercentage, 0); // Maximum value of 0%
+      nextPercentage = Math.max(nextPercentage, -100); // Minimum value of -100%
+
+      track.dataset.percentage = nextPercentage;
+
+      // Animate the track with a constant duration and easing
+      track.animate(
+        [
+          { transform: `translate(${nextPercentage}%, -50%)` },
+        ],
+        {
+          duration: 1000, // Duration of the animation
+          easing: "ease", // Smooth easing function
+          fill: "forwards", // Retain the final state
+        }
+      );
+
+      // Animate images with the same easing and duration
+      for (const image of track.getElementsByClassName("img")) {
+        image.animate(
+          [
+            { objectPosition: `${100 + nextPercentage}% center` },
+          ],
+          {
+            duration: 1000, // Same duration for image movement
+            easing: "ease", // Smooth easing function
+            fill: "forwards", // Retain the final state
+          }
+        );
+      }
+    };
+
+    window.onmouseup = () => {
+      isMouseDown = false;
+      track.dataset.prevPercentage = track.dataset.percentage;
+    };
+  </script>
+</html>
